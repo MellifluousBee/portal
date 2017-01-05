@@ -11,3 +11,4 @@ and user-friendly layout.  It might look something like this:
 ![image](https://cloud.githubusercontent.com/assets/20831851/21670637/52c499f4-d2db-11e6-95e7-c8cd2363e18e.png)
 
 It will also have a singular sign in screen:
+![image](https://cloud.githubusercontent.com/assets/20831851/21670702/fc9de638-d2db-11e6-904d-e400f239b99b.png)
