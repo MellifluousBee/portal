@@ -1,5 +1,5 @@
 # portal
-a shift employee scheduling and communication web app
+## a shift employee scheduling and communication web app
 I manage the front of house part-time staff of the St Louis Symphony Orchestra.  For years, I have witnessed a very inefficient schedule making
 and communicating system.  Schedules are made by hand and emails sent with attachments.  When people change shifts, they must email to inform the
 manager who changes their time clock information.  This web app will attempt to serve as a central info distro site to tell staff members what
@@ -18,3 +18,4 @@ All users will come to this basic screen from which they can navigate to a calen
 The individual profile page will have this information:
 ![image](https://cloud.githubusercontent.com/assets/20831851/21670778/a80095f2-d2dc-11e6-8071-a1ae2a4ae08e.png)
 The manager will have some kind of form to make schedules like this one for just bartenders:
+![image](https://cloud.githubusercontent.com/assets/20831851/21670831/eea3d46a-d2dc-11e6-96c8-ed1027b6ad35.png)
