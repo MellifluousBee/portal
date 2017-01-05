@@ -9,3 +9,5 @@ will allow schedule creation using algorithms that check in order of availabilit
 with a staffing number input.  The prototype will seek to schedule just the bartenders right now. I will use bootstrap to create a very simple
 and user-friendly layout.  It might look something like this:
 ![image](https://cloud.githubusercontent.com/assets/20831851/21670637/52c499f4-d2db-11e6-95e7-c8cd2363e18e.png)
+
+It will also have a singular sign in screen:
