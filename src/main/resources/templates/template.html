@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment="dochead">
+	<link th:href="@{/css/normalize.css}" rel="stylesheet" />
+	<link th:href="@{/css/styles.css}" rel="stylesheet" />
+	<title>SLSO Front Of House Portal</title>
+	
+	
+</head>
+
+<body>
+<div th:fragment="image"><img src="http://www.stlsymphony.org/img/logo.svg" alt= "StlSymphony Logo" style= "width:500px;height:147px;"></img></div>
+
+<nav th:fragment="navigation">
+	<ul id="user-account">
+	    <li><a href="/myShifts">My Shifts</a></li>
+	    <li><a href="/myprofile">My Profile</a></li>
+	    <li><a href="/requestoff">Request Off</a></li>
+	</ul>
+	<ul>
+        <li><a href="/calendar">Calendar</a></li>
+        <li><a href="/">Logout</a></li>
+
+        
+    </ul>
+</nav>
+
+</body>
+</html>

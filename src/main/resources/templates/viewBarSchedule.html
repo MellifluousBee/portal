@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="template :: dochead">
+</head>
+<body>
+	<div th:replace="template:: image"></div>
+	<div th:replace="template :: navigation"></div>
+	<h2><span th:text="${day}"></span><span th:text="${date}"></span></h2>
+	<h2><span th:text="${calltime}"></span></h2>
+	<div th:each="bartender : ${bartenders}">
+	<p th:text="${bartender.username}"></p>
+    </div>
+
+
+</body>
+</html>
