@@ -14,3 +14,4 @@ It will also have a singular sign in screen:
 ![image](https://cloud.githubusercontent.com/assets/20831851/21670702/fc9de638-d2db-11e6-904d-e400f239b99b.png)
 
 All users will come to this basic screen from which they can navigate to a calender, their profile, request off forms, and if they are a manager, to a schedule creation area.
+![image](https://cloud.githubusercontent.com/assets/20831851/21670752/6c7bd33e-d2dc-11e6-846b-371c1113ca61.png)
