@@ -27,6 +27,9 @@ public abstract class User{
 		protected String username; 
 		protected String pwHash;
 		protected static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		protected String address;
+		protected String phoneNumber;
+		protected String email;
 		
 		
 		
@@ -42,6 +45,34 @@ public abstract class User{
 //		//hibernate required no args// also hibernate requires setters
 //		public User() {}
 		
+		@Column(name="address")
+		public String getAddress() {
+			return address;
+		}
+
+		public void setAddress(String address) {
+			this.address = address;
+		}
+		
+		@Column (name="phone")
+		public String getPhoneNumber() {
+			return phoneNumber;
+		}
+
+		public void setPhoneNumber(String phoneNumber) {
+			this.phoneNumber = phoneNumber;
+		}
+		
+		@Column (name="email")
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+
 		@Id//sets it as a primary key 
 	    @GeneratedValue//hibernate generates a value for me
 	    @Column(name = "uid", unique = true)//makes the getter a column in DB table

@@ -13,14 +13,13 @@ import javax.persistence.Entity;
 public class Bartender extends User implements Serializable {
 
 	/**
-	 * serializable?
+	 * serializable? - can be saved?
 	 */
 	private static final long serialVersionUID = 1L;
-	public Bartender(String username, String password){
-
-		this.username = username;
-		this.pwHash = hashPassword(password);
+	public Bartender(){
+		super();
 	}
-	public Bartender(){}
+	
 }
+
 

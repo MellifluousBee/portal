@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:fragment="dochead">
-	<link th:href="@{/css/normalize.css}" rel="stylesheet" />
-	<link th:href="@{/css/styles.css}" rel="stylesheet" />
+	<meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+    <link href="css/custom.css" rel="stylesheet"></link>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'></link>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 	<title>SLSO Front Of House Portal</title>
 	
 	
@@ -11,19 +19,59 @@
 <body>
 <div th:fragment="image"><img src="http://www.stlsymphony.org/img/logo.svg" alt= "StlSymphony Logo" style= "width:500px;height:147px;"></img></div>
 
-<nav th:fragment="navigation">
-	<ul id="user-account">
-	    <li><a href="/myShifts">My Shifts</a></li>
-	    <li><a href="/myprofile">My Profile</a></li>
-	    <li><a href="/requestoff">Request Off</a></li>
-	</ul>
-	<ul>
-        <li><a href="/calendar">Calendar</a></li>
-        <li><a href="/">Logout</a></li>
-
-        
-    </ul>
+<nav th:fragment="navbar">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+<!-- 			<a class="navbar-brand" href="http://slso.org"><img src="images/logo.jpg"style= "width:200px;height:47px;"></img></a> -->
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/calendar">Calendar</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MyPortal<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="/myprofile">My Profile</a></li>
+						<li><a href="/requestoff">Request Off</a></li>
+						<li><a href="/myShifts">My Shifts</a></li>
+					</ul>
+				</li>
+				<li><a href="/index">Logout</a></li>
+			</ul>
+		</div>
+	</div>
 </nav>
+<div th:fragment="info" class="jumbotron">
+	<div class="container">
+<!-- 		<h1>Welcome, Mel.</h1><h4> You are the Assistant Front of House Manager</h4> -->
+<!--        <p><img src="images/Brockley.jpg"style= "width:300px;height:100px;"></img></p> -->
+<!-- 		<p> These are your scheduled shifts:</p> -->
+<!-- 		<br></br> -->
+<!-- 		<p><a class="btn btn-primary btn-lg" href="#" role="button">Request Off »</a> <a class="btn btn-primary btn-lg" href="#" role="button">Give up Shift »</a></p> -->
+	</div> 
+</div>
+<section class="call-to-action">
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<span class="glyphicon glyphicon-bullhorn " aria-hidden="true"></span>
+			<h3>Notifications</h3>
+			<p>Kim Dixon requests off 1/14/17 5:30PM <a class="btn btn-primary btn-lg" href="#" role="button">Pickup Shift »</a></p>
+		</div>
+	</div>
+</div>
+</section>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+   
+      
 
 </body>
 </html>
