@@ -1,73 +1,61 @@
 package org.stlsymphony.portal.models;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
+import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
-
-@Entity //this is an object I want you to store in database
-@Table(name = "barschedule")
-public class BarSchedule extends AbstractSchedule{
-	//make a table in DB for schedules, each schedule will be a different row in the table
-
-			//has a:
-			public String day;//i.e. Friday
-			public LocalDate date; //will this timestamp or input anydate?
-			public String calltime;//5:30PM or 12:30PM
-			public ArrayList<Bartender>bartenders;
-			
+@SuppressWarnings("serial")
+@Entity
+@Table(name="barSchedule")
+public class BarSchedule implements Serializable {
+	//has a:
+		private int id;
+		private ShiftCalendar ShiftCalendar= new ShiftCalendar();
+		private Bartender bartender=new Bartender();
+	
+			public BarSchedule(ShiftCalendar ShiftCalendar, Bartender bartender){
+				this.ShiftCalendar=ShiftCalendar;
+				this.bartender=bartender;
+			}
 			public BarSchedule(){
-				//no args required for hibernate
+				//hibernate required no args constructor
 			}
-			//constructor
-			public BarSchedule(String day, LocalDate date, String calltime, ArrayList<Bartender>bartenders){
-				super();
-				this.day=day;
-				this.date=date;
-				this.calltime=calltime;
-				this.bartenders= bartenders;
-			}
-			
-			@NotNull
-		    @Column(name = "date")
-			public LocalDate getDate(){
-				return this.date;
-			}
-			public void setDate(LocalDate date){
-				this.date=date;
-			}
-			@NotNull
-		    @Column(name = "day")
-			public String getDay(){
-				return this.day;
-			}
+			@Id @GeneratedValue
+			public int getid(){
+				return this.id;}
 		
-			public void setDay(String day){
-				this.day=day;
-			}
-			@NotNull
-		    @Column(name = "calltime")
-			public String getCallTime(){
-				return this.calltime;
+			public int setid(int id){
+				return this.id=id;
 			}
 			
-			public String setCallTime(String calltime){
-				return this.calltime=calltime;
-			}
-			@Column(name="scheduled_bartenders")
-			public ArrayList<Bartender> getBartenders(){
-				return this.bartenders;
-			}
-			public void setBartenders(ArrayList<Bartender> bartenders){
-				return;
-			}
-			
-			public void addBartender(Bartender b){
-				bartenders.add(b);
+			@ManyToOne
+			@JoinColumn(name="shift_uid", 
+						foreignKey=@ForeignKey(name="FK_ShiftCalendar"))
+			public ShiftCalendar getShiftCalendar() {
+				return ShiftCalendar;
 			}
 
+			public void setShiftCalendar(ShiftCalendar shiftCalendar) {
+				ShiftCalendar = shiftCalendar;
+			}
+
+			
+			@ManyToOne
+			@JoinColumn(name= "user_uid", foreignKey=
+					@ForeignKey (name="FK_User"))
+			public Bartender getBartender() {
+				return bartender;
+			}
+
+			public void setBartender(Bartender bartender) {
+				this.bartender = bartender;
+			}
+
+		
 }

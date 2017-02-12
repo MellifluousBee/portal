@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.stlsymphony.portal.models.Bartender;
+import org.stlsymphony.portal.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,24 +24,38 @@ public class AuthenticationController extends AbstractController {
 		String username= request.getParameter("username");
 		String password=request.getParameter("password");
 		String verify=request.getParameter("verify");
-		if(Bartender.isValidUsername(username)){//if the username meets minimum standards
-			if(bartenderDao.findByUsername(username)!=null){
+		String jobtitle=request.getParameter("jobtitle");
+		
+		if(User.isValidUsername(username)){//if the username meets minimum standards
+			if(userDao.findByUsername(username)!=null){
 				model.addAttribute("error", "This username already exists.");
 				return "signup";
 			}else{
-			if(Bartender.isValidPassword(password)){
+			if(User.isValidPassword(password)){
 					if (password.equals(verify)){//and if password and verify password are equal
-						//create a new user and setup the session
-						Bartender b= new Bartender();
-						b.setPassword(password);
-						b.setUsername(username);
-						//add user to database
-						bartenderDao.save(b);
-						HttpSession thisSession= request.getSession();
-						setUserInSession(thisSession, b);
-						
-						return "redirect:/myShifts";
-					}else{//put error message into the template
+						//create a new user according to jobtitle, setup the session
+//						if(jobtitle=="headBartender"){
+//							HeadBartender hb= new HeadBartender();
+//							hb.setPassword(password);
+//							hb.setUsername(username);
+//							userDao.save(hb);
+//							HttpSession thisSession=request.getSession();
+//							setUserInSession(thisSession,hb);	
+//							
+//							return "redirect:/myShifts";
+//							
+//						}else{
+							Bartender b= new Bartender();
+							b.setPassword(password);
+							b.setUsername(username);
+							//add user to database
+							userDao.save(b);
+							HttpSession thisSession= request.getSession();
+							setUserInSession(thisSession, b);
+							
+							return "redirect:/myShifts";
+						}
+					else{//put error message into the template
 						model.addAttribute("verify_error", "Your passwords don't match. Try again.");
 						return "signup";
 					}
@@ -48,8 +63,7 @@ public class AuthenticationController extends AbstractController {
 					model.addAttribute("password_error", "This is an invalid password. Nice try.");
 					return "signup";
 				}
-			}
-		}else{
+			}}else{
 			model.addAttribute("username_error", "This username is not valid.");
 			return "signup";
 		}
@@ -75,13 +89,13 @@ public class AuthenticationController extends AbstractController {
 		String password= request.getParameter("password");
 		
 		//check password is correct, if incorrect, pass an error through the template
-		if(bartenderDao.findByUsername(username)!= null){//checks if user exists in DB
+		if(userDao.findByUsername(username)!= null){//checks if user exists in DB
 			//establish a user object
-			Bartender b= bartenderDao.findByUsername(username);//this method returns a user,saved as user u
+			User u= userDao.findByUsername(username);//this method returns a user,saved as user u
 			//check password against database
-			if(b.isMatchingPassword(password)){//checks if the password variable hashes to be the same as the hashed password in the database
+			if(u.isMatchingPassword(password)){//checks if the password variable hashes to be the same as the hashed password in the database
 				HttpSession thisSession= request.getSession();//log them in if so (by setting the user in the session)
-				setUserInSession(thisSession, b);
+				setUserInSession(thisSession, u);
 			}else{
 				model.addAttribute("error", "This is not the correct password");
 				return "index";

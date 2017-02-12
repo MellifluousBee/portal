@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.stlsymphony.portal.controllers.AbstractController;
 import org.stlsymphony.portal.models.dao.BarScheduleDao;
-import org.stlsymphony.portal.models.dao.BartenderDao;
-import org.stlsymphony.portal.models.Bartender;
+import org.stlsymphony.portal.models.dao.UserDao;
+import org.stlsymphony.portal.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 //used to determine whether or not a user is logged in
@@ -19,7 +19,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 	//spring's dependency injection will set up the DAO
     //data access objects used to pull users and schedules out of database
       @Autowired
-      BartenderDao bartenderDao;
+      UserDao userDao;
       
       @Autowired
       BarScheduleDao barScheduleDao;
@@ -33,16 +33,16 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
         if ( authPages.contains(request.getRequestURI()) ) {
         	// if the requested url in the browser is one of the restricted pages
         	boolean isLoggedIn = false;//initially set isloggedin to false
-        	Bartender bartender;
+        	User user;
         	//look for a loggedin user, login is stored in a "session" that normally uses cookies to store user info
             //this session stores user info in server, not browser
         	//looked for the id of a logged in user
         	Integer userId = (Integer) request.getSession().getAttribute(AbstractController.userSessionKey);
 
             if (userId != null) {
-            	bartender = bartenderDao.findByUid(userId);//try to look up user in database
+            	user = userDao.findByUid(userId);//try to look up user in database
             	
-            	if (bartender != null) {
+            	if (user != null) {
             		isLoggedIn = true;
             	}
             }

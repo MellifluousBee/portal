@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 
 
 @Entity
-@DiscriminatorValue("B")
+@DiscriminatorValue("Bartender")
 
 public class Bartender extends User implements Serializable {
 
@@ -16,11 +16,17 @@ public class Bartender extends User implements Serializable {
 	 * serializable?
 	 */
 	private static final long serialVersionUID = 1L;
-	public Bartender(String username, String password){
 
-		this.username = username;
-		this.pwHash = hashPassword(password);
+//	public Bartender(String username, String password){
+//
+//		this.username = username;
+//		this.pwHash = hashPassword(password);
+//	}
+	public Bartender(){
+		super();
 	}
-	public Bartender(){}
-}
 
+	
+
+
+}

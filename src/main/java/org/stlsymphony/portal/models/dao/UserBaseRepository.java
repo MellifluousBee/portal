@@ -3,10 +3,10 @@ package org.stlsymphony.portal.models.dao;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.NoRepositoryBean;
+//import org.springframework.data.repository.NoRepositoryBean;
 import org.stlsymphony.portal.models.User;
 
-@NoRepositoryBean
+//@NoRepositoryBean
 public interface UserBaseRepository <T extends User> extends CrudRepository<T, Integer> {
 	// create one DAO for each model class stored in the database
 	//use dao to query one of the class in the database within the application
